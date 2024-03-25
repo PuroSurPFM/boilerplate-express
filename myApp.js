@@ -1,5 +1,4 @@
-let express = require('express');
-let app = express('Hello World');
+let app = require('express')('Hello World');
 
 
 
