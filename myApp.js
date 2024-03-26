@@ -6,10 +6,14 @@ app.get("/", (req, res) => {
 
   res.sendFile(__dirname + "/views/index.html");
 });
-app.get("/json", process.env.MESSAGE_STYLE, (req, res) => {
-  res.json({
-    message: "Hello json"
-  });
+let message= 'Hello json';
+app.get("/json", (req, res) => {
+  if ( process.env['MESSAGE_STYLE'] === "uppercase") {
+      res.json({ "message": message.toUpperCase() });
+  }
+  else {
+    res.json({ "message": message });
+  }
 });
 
 app.use("/public", express.static(__dirname + "/public"));
